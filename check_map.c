@@ -13,7 +13,7 @@ int check_map(char **map)
     int x = 0;
 
     while (map[i] != NULL) {
-        for (x = 0; x != 0; x++)
+        for (x = 0; map[i][x] != 0; x++)
             if (map[i][x] == '|')
                 return (1);
         i++;

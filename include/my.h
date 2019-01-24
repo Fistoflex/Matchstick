@@ -8,11 +8,13 @@
 #ifndef __MY_H__
 #define __MY_H__
 
+#include <time.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stddef.h>
 
+void ai_play(char ***, int, int);
 void my_putchar(char);
 void my_put_nbr(int);
 int my_getnbr(char *);

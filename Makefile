@@ -5,39 +5,57 @@
 ## Compile my bootstrap
 ##
 
-SRC	=	./main.c		\
-		./create_map.c		\
-		./disp_map.c		\
-		./count_matches.c	\
-		./remove_matches.c	\
-		./disp_end.c		\
-		./player_play.c		\
-		./check_nbrs.c		\
-		./matchstick.c		\
-		./check_map.c
+SRC		=	./ai_play.c		\
+			./create_map.c		\
+			./disp_map.c		\
+			./count_matches.c	\
+			./remove_matches.c	\
+			./disp_end.c		\
+			./player_play.c		\
+			./check_nbrs.c		\
+			./matchstick.c		\
+			./check_map.c
 
-OBJ	=	$(SRC:.c=.o)
+SRC_MAIN	=	./main.c
 
-CFLAGS	=	-W -I./include -g
+OBJ		=	$(SRC:.c=.o)
 
-LDFLAGS =    	-L ./lib/ -lmy
+OBJ_MAIN	=	$(SRC_MAIN:.c=.o)
 
-CC	=	gcc
+CFLAGS		=	-W -I./include -g
 
-NAME	=	matchstick
+TFLAGS		=	--coverage -lcriterion
+
+LDFLAGS 	=    	-L ./lib/ -lmy
+
+CC		=	gcc
+
+NAME		=	matchstick
+
+BIN		=	unit_tests
+
+TEST		=	tests/tests.c
+
+INC		=	-Iinclude
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ)
+$(NAME):	$(OBJ) $(OBJ_MAIN)
 		make -sC ./lib/my/
-		$(CC) -o $(NAME) $(OBJ) $(LDFLAGS) -g
+		$(CC) -o $(NAME) $(OBJ) $(OBJ_MAIN) $(LDFLAGS) -g
+
+tests_tun:
+		$(CC) -o $(BIN) $(SRC) $(TEST) $(INC) $(LDFLAGS) $(TFLAGS)
+		./$(BIN)
 
 clean:
 		rm -rf $(OBJ)
+		rm -rf $(OBJ_MAIN)
 		make -sC ./lib/my/ clean
 
 fclean:		clean
 		rm -rf $(NAME)
+		rm -rf $(BIN)
 		make -sC ./lib/my/ fclean
 
 re:		fclean all
