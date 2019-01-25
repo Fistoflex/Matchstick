@@ -33,15 +33,23 @@ int check_error(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
+    int result = 0;
     int game = 0;
     int size = 0;
     int limit = 0;
     char **map = NULL;
+
     
     if (check_error(argc, argv) == 84)
         return (84);
     size = my_getnbr(argv[1]);
     limit = my_getnbr(argv[2]);
     map = create_map(size);
-    matchstick(map, size, limit);
+    result = matchstick(map, size, limit);
+    if (result == 84)
+        return (0);
+    else if (result == 2)
+        return (1);
+    else
+        return (2);
 }
