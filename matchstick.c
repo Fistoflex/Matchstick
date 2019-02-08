@@ -25,7 +25,7 @@ int matchstick(char **map, int size, int limit)
     int player = -1;
     int game = 0;
     int empty_or_not = 0;
-    
+
     while(42) {
         player = player * -1;
         empty_or_not = loop_start(map, size, player);

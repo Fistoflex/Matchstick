@@ -78,7 +78,7 @@ int player_play(char ***map, int size, int limit)
 {
     args_t arguments;
     int i = 0;
-    
+
     while ((i = init(map, &arguments, size, limit)) == -1);
     if (arguments.res == 84)
         return (84);
