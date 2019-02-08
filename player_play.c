@@ -42,7 +42,7 @@ int matches(int line, int limit, char ***map)
         my_putstr("Error: you have to remove at least one match\n");
         return (3846);
     } else if (my_getnbr(buffer) > limit) {
-        print_error_matches(my_getnbr(buffer), limit);
+        print_error_matches(limit);
         return (3846);
     } else if (my_getnbr(buffer) > count_matches(*map, line)) {
         my_putstr("Error: not enough matches on this line\n");
@@ -71,6 +71,7 @@ int init(char ***map, args_t *args, int size, int limit)
         return (-1);
     args->nbr_line = nbr_line;
     args->nbr_matches = nbr_matches;
+    return (0);
 }
 
 int player_play(char ***map, int size, int limit)
@@ -78,13 +79,13 @@ int player_play(char ***map, int size, int limit)
     args_t arguments;
     int i = 0;
     
-    while (i = init(map, &arguments, size, limit) == -1);
+    while ((i = init(map, &arguments, size, limit)) == -1);
     if (arguments.res == 84)
         return (84);
     (*map) = remove_matches(*map, arguments.nbr_line, arguments.nbr_matches);
     my_putstr("Player removed ");
     my_put_nbr(arguments.nbr_matches);
-    my_putstr(" match(es) from line  ");
+    my_putstr(" match(es) from line ");
     my_put_nbr(arguments.nbr_line);
     my_putchar(10);
     return (1);

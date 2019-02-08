@@ -38,8 +38,7 @@ int matchstick(char **map, int size, int limit)
             game = player_play(&map, size, limit);
             if (game == 84)
                 return (84);
-        }
-        if (player == -1) {
+        } else if (player == -1) {
             my_putstr("\nAI's turn...\n");
             ai_play(&map, size, limit);
         }

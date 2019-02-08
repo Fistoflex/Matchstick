@@ -31,8 +31,7 @@ int ai_play(char ***map, int size, int limit)
     int i = 1;
     int line = 0;
     int matches = 0;
-    
-    srandom(time(0));
+
     while (i == 1) {
         line = random_int(size);
         if (count_matches(*map, line) == 0)
@@ -49,4 +48,5 @@ int ai_play(char ***map, int size, int limit)
     }
     remove_matches((*map), line, matches);
     disp_ai_play(matches, line);
+    return (0);
 }

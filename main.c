@@ -9,15 +9,11 @@
 
 int check_error(int argc, char **argv)
 {
-    int size = 0;
-    int limit = 0;
     int i = 1;
-    
+
     if (argc != 3)
         return (84);
     else if (argc == 3) {
-        size = my_getnbr(argv[1]);
-        limit = my_getnbr(argv[2]);
         while (i <= 2)
             if (my_getnbr(argv[i]) != -1)
                 i++;
@@ -34,12 +30,11 @@ int check_error(int argc, char **argv)
 int main(int argc, char **argv)
 {
     int result = 0;
-    int game = 0;
     int size = 0;
     int limit = 0;
     char **map = NULL;
 
-    
+    srandom(time(0));
     if (check_error(argc, argv) == 84)
         return (84);
     size = my_getnbr(argv[1]);

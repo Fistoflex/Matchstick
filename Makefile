@@ -22,7 +22,7 @@ OBJ		=	$(SRC:.c=.o)
 
 OBJ_MAIN	=	$(SRC_MAIN:.c=.o)
 
-CFLAGS		=	-W -I./include -g
+CFLAGS		=	-W -I./include -g -Wextra -Wall
 
 TFLAGS		=	--coverage -lcriterion
 
